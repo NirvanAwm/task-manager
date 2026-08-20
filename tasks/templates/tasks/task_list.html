@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Task Manager</title>
+    </head>
+    <body>
+        {% for task in tasks %}
+            <div>
+                <h2>{{ task.title }}</h2>
+                <p>{{ task.description }}</p>
+            </div>
+        {% empty %}
+            <p>No tasks found. </p>
+        {% endfor %}
+    </body>
+</html>
