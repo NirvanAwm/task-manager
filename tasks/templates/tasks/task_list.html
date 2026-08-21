@@ -1,17 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Task Manager</title>
+        <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
     </head>
     <body>
-        {% for task in tasks %}
-            <div>
-                <h2>{{ task.title }}</h2>
-                <p>{{ task.description }}</p>
+        <header>
+            <h1>Task Manager</h1>
+            <p>Manage your tasks easily</p>
+        </header>
+        <main>
+            <div class="task-header">
+                <h2>My Tasks</h2>
+                <a href="#">+ New Task</a>
             </div>
-        {% empty %}
-            <p>No tasks found. </p>
-        {% endfor %}
+
+            {% for task in tasks %}
+                <article class="task">
+                    <h3>{{ task.title }}</h3>
+                    <p>{{ task.description }}</p>
+                    <span class="task-status">{{ task.status }}</span>
+                    <span class="task-priority">{{ task.priority }}</span>
+
+                    {% if task.due_date %}
+                        <p>
+                            Due : {{ task.due_date}}
+                        </p>
+                    {% endif %} 
+                </article>
+
+            {% empty %}
+                <p>No tasks found. </p>
+            {% endfor %}
+        </main>
     </body>
 </html>
