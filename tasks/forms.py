@@ -9,4 +9,11 @@ class TaskForm(forms.ModelForm):
             'description',
             'status',
             'priority',
+            'due_date',
         ]
+
+        widgets = {
+            'due_date': forms.DateInput(
+                attrs={'type': 'date'}
+            ),
+        }
