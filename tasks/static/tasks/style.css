@@ -58,3 +58,54 @@ main {
     font-size: 13px;
     background: #eee;
 }
+
+.form-container {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.form-container p {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-container textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-container button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #222;
+    text-decoration: none;
+}

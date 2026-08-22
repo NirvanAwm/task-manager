@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+
+    <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Create New Task</h1>
+        <p>Add a new task to your list.</p>
+    </header>
+
+    <main>
+
+        <div class="form-container">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    Create Task
+                </button>
+
+            </form>
+
+            <a class="back-link" href="{% url 'task_list' %}">
+                ← Back to Tasks
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
