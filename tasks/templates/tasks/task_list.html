@@ -29,6 +29,14 @@
                             Due : {{ task.due_date}}
                         </p>
                     {% endif %} 
+
+                    <a class="edit-link" href="{% url 'task_edit' task.id %}">
+                        Edit
+                    </a>
+
+                    <a class="delete-link" href="{% url 'task_delete' task.id %}">
+                        Delete
+                    </a>
                 </article>
 
             {% empty %}

@@ -43,6 +43,8 @@ main {
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
 }
 
 .task h3 {
@@ -51,9 +53,13 @@ main {
 
 .task-status,
 .task-priority {
-    display: inline-block;
+    display: inline-flex;
+    width: fit-content;
+    align-self: flex-start;
+
     padding: 5px 10px;
     margin-right: 5px;
+
     border-radius: 5px;
     font-size: 13px;
     background: #eee;
@@ -108,4 +114,20 @@ main {
     margin-top: 20px;
     color: #222;
     text-decoration: none;
+}
+
+.edit-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 14px;
+    background: #eee;
+    color: #222;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    align-self: flex-end;
+}
+
+.edit-link:hover {
+    background: #ddd;
 }

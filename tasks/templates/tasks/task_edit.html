@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+    
+        <meta charset="UTF-8">
+        
+        <title>
+            Edit Task
+        </title>
+
+        <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+    
+    </head>
+
+    <body>
+        
+        <header>
+            <h1>Edit Task</h1>
+            <p>Update your task.</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {{ form.as_p }}
+
+                    <button type="submit">
+                        Save Changes
+                    </button>
+
+                </form>
+            
+                <a class="back-link" href="{% url 'task_list' %}">
+                    ← Back to Tasks
+                </a>
+            
+            </div>
+
+        </main>
+
+    </body>
+
+</html>
