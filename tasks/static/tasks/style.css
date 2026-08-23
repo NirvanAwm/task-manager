@@ -67,7 +67,7 @@ main {
 
 .form-container {
     background: white;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 30px;
     border-radius: 8px;
@@ -109,6 +109,16 @@ main {
     font-size: 14px;
 }
 
+.form-container .delete-link{
+    background-color: #dc3545;
+    color: white;
+}
+
+
+.form-container .delete-link:hover{
+    background-color: #b02a37;
+}
+
 .back-link {
     display: inline-block;
     margin-top: 20px;
@@ -116,6 +126,15 @@ main {
     text-decoration: none;
 }
 
+.task-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.task-title-link:hover {
+    color: #555;
+}
 
 
 .detail-card {
@@ -183,3 +202,4 @@ main {
 .detail-actions .delete-link:hover {
     background-color: #b02a37;
 }
+

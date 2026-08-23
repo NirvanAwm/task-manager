@@ -21,22 +21,18 @@
 
         <main> 
             <div class="form-container">
-                <h2>Are you sure ? </h2>
-                <p>
-                    Do you really want to delete
-                    <strong>{{ task.title }}?</strong>
-                </p>
+                <h2>Are you sure you want to delete <strong>"{{ task.title }}"?</strong> </h2>
                 
                 <form method="POST">
                     {% csrf_token %}
 
-                    <button type="submit">
+                    <button class="delete-link" type="submit">
                         Yes, Delete
                     </button>
 
                 </form>
 
-                <a class="back-line" href="{% url 'task_list' %}">
+                <a class="back-link" href="{% url 'task_list' %}">
                     Cancel
                 </a>
 

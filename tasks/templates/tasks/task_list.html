@@ -19,7 +19,7 @@
 
             {% for task in tasks %}
                 <article class="task">
-                    <a href="{% url 'task_detail' task.id %}">
+                    <a class="task-title-link" href="{% url 'task_detail' task.id %}">
                         <h3>{{ task.title }}</h3>
                     </a>
                     
