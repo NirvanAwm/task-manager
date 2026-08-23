@@ -116,18 +116,70 @@ main {
     text-decoration: none;
 }
 
-.edit-link {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 14px;
-    background: #eee;
-    color: #222;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    align-self: flex-end;
+
+
+.detail-card {
+    max-width: 700px;
+    margin: 30px auto;
 }
 
-.edit-link:hover {
-    background: #ddd;
+.detail-card h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.task-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.task-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.task-dates {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.task-dates p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+.detail-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.detail-actions a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.detail-actions .edit-link {
+    background-color: #222;
+    color: white;
+}
+
+.detail-actions .delete-link {
+    background-color: #dc3545;
+    color: white;
+}
+
+.detail-actions .edit-link:hover {
+    background-color: #444;
+}
+
+.detail-actions .delete-link:hover {
+    background-color: #b02a37;
 }

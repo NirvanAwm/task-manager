@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ task.title }} - Task Detail</title>
+        <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+
+    </head>
+
+    <body>
+        <header>
+            <div>
+                <h1>Task Detail </h1>
+            </div>
+        </header>
+        <main>
+
+            <div class="task detail-card">
+
+                <h2>{{ task.title }}</h2>
+
+                <p class="task-description">
+                    {{ task.description|default:"No description provided." }}
+                </p>
+
+                <div class="task-meta">
+
+                    <span class="task-status">
+                        {{ task.status }}
+                    </span>
+
+                    <span class="task-priority">
+                        {{ task.priority }}
+                    </span>
+
+                </div>
+
+                <div class="task-dates">
+
+                    <p>
+                        <strong>Due date:</strong>
+                        {{ task.due_date|default:"No due date" }}
+                    </p>
+
+                    <p>
+                        <strong>Created:</strong>
+                        {{ task.created_at }}
+                    </p>
+
+                    <p>
+                        <strong>Updated:</strong>
+                        {{ task.updated_at }}
+                    </p>
+
+                </div>
+
+                <div class="detail-actions">
+
+                    <a class="edit-link" href="{% url 'task_edit' task.id %}">
+                        Edit
+                    </a>
+
+                    <a class="delete-link" href="{% url 'task_delete' task.id %}">
+                        Delete
+                    </a>
+                    
+                </div>
+                
+                <a class="back-link" href="{% url 'task_list' %}">
+                    ← Back to Tasks
+                </a>
+            </div>
+
+            
+
+        </main>
+
+    </body>
+
+</html>

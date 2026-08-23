@@ -19,7 +19,10 @@
 
             {% for task in tasks %}
                 <article class="task">
-                    <h3>{{ task.title }}</h3>
+                    <a href="{% url 'task_detail' task.id %}">
+                        <h3>{{ task.title }}</h3>
+                    </a>
+                    
                     <p>{{ task.description }}</p>
                     <span class="task-status">{{ task.status }}</span>
                     <span class="task-priority">{{ task.priority }}</span>
@@ -29,14 +32,16 @@
                             Due : {{ task.due_date}}
                         </p>
                     {% endif %} 
+                    
+                    <div class="detail-actions">
+                        <a class="edit-link" href="{% url 'task_edit' task.id %}">
+                            Edit
+                        </a>
 
-                    <a class="edit-link" href="{% url 'task_edit' task.id %}">
-                        Edit
-                    </a>
-
-                    <a class="delete-link" href="{% url 'task_delete' task.id %}">
-                        Delete
-                    </a>
+                        <a class="delete-link" href="{% url 'task_delete' task.id %}">
+                            Delete
+                        </a>
+                    </div>
                 </article>
 
             {% empty %}
