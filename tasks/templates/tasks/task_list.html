@@ -19,19 +19,22 @@
 
             {% for task in tasks %}
                 <article class="task">
-                    <a class="task-title-link" href="{% url 'task_detail' task.id %}">
+                    <a class="task-card-link" href="{% url 'task_detail' task.id %}">
                         <h3>{{ task.title }}</h3>
-                    </a>
                     
-                    <p>{{ task.description }}</p>
-                    <span class="task-status">{{ task.status }}</span>
-                    <span class="task-priority">{{ task.priority }}</span>
+                        <p>{{ task.description }}</p>
+                        
+                        <div class="task-meta">
+                            <span class="task-status status-{{ task.status|lower }}">{{ task.status }}</span>
+                            <span class="task-priority priority-{{ task.priority|lower }}">{{ task.priority }}</span>
+                        </div>
 
-                    {% if task.due_date %}
-                        <p>
-                            Due : {{ task.due_date}}
-                        </p>
-                    {% endif %} 
+                        {% if task.due_date %}
+                            <p>
+                                Due : {{ task.due_date}}
+                            </p>
+                        {% endif %} 
+                    </a>
                     
                     <div class="detail-actions">
                         <a class="edit-link" href="{% url 'task_edit' task.id %}">

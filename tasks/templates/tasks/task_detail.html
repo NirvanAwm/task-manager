@@ -28,13 +28,15 @@
 
                 <div class="task-meta">
 
-                    <span class="task-status">
+                    <p class="task-status status-{{ task.status|lower }}">
+                        <strong>Status: </strong>
                         {{ task.status }}
-                    </span>
+                    </p>
 
-                    <span class="task-priority">
+                    <p class="task-priority priority-{{ task.priority|lower }}">
+                        <strong>Priority: </strong>
                         {{ task.priority }}
-                    </span>
+                    </p>
 
                 </div>
 

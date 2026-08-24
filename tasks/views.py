@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, RegisterForm
+from django.contrib.auth import login
+
 
 def task_list(request):
     tasks = Task.objects.all()
@@ -17,7 +19,7 @@ def task_create(request):
             return redirect('task_list') 
     
     else:
-        form = TaskForm
+        form = TaskForm()
         
     return render(request, 'tasks/task_create.html', {
         'form': form
@@ -29,7 +31,7 @@ def task_edit(request, task_id):
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
 
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             return redirect('task_list')
 
@@ -60,5 +62,21 @@ def task_detail(request, task_id):
     return render(request, 'tasks/task_detail.html', {
         'task': task
     })
+
+def register(requset):
+    if requset.method == 'POST':
+        form = RegisterForm(requset.POST)
+        if form.is_valid():
+            user = form.save()
+            login(requset, user)
+            return redirect('task_list')
+
+    else:
+        form = RegisterForm()
+
+    return render(requset, 'tasks/register.html', {
+        'form': form
+    })
+
 
 # Create your views here.

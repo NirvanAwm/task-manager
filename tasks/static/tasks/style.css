@@ -157,6 +157,7 @@ main {
     display: flex;
     gap: 8px;
     margin-bottom: 20px;
+    
 }
 
 .task-dates {
@@ -203,3 +204,49 @@ main {
     background-color: #b02a37;
 }
 
+.task {
+    transition: 0.2s ease;
+}
+
+.task:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.task-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.task-card-link h3 {
+    margin-top: 0;
+}
+
+.task-card-link:hover h3 {
+    color: #555;
+}
+
+.status-todo {
+    background: #eee;
+}
+
+.status-doing {
+    background: #fff3cd;
+}
+
+.status-done {
+    background: #d1e7dd;
+}
+
+.priority-low {
+    background: #eee;
+}
+
+.priority-medium {
+    background: #fff3cd;
+}
+
+.priority-high {
+    background: #f8d7da;
+}
