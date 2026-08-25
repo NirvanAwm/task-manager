@@ -43,12 +43,21 @@
 
                         <a class="delete-link" href="{% url 'task_delete' task.id %}">
                             Delete
-                        </a>
+                        </a><br>
+
+                        
                     </div>
+
+                    <a class="back-link" href="{% url 'logout' %}">
+                        Logout
+                    </a>
                 </article>
 
             {% empty %}
                 <p>No tasks found. </p>
+                <a class="back-link" href="{% url 'logout' %}">
+                    Logout
+                </a>
             {% endfor %}
         </main>
     </body>

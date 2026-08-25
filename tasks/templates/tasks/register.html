@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Register</title>
+        
+        <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+    </head>
+
+    <body>
+        
+        <header>
+            <h1>Create Account</h1>
+        </header>
+
+        <main>
+            
+            <div class="form-container">
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit">
+                        Register
+                    </button>
+                </form>
+                
+                <a class="back-link" href="{% url 'login' %}">
+                    Already have an account? <strong>Login</strong>
+                </a><br>
+
+                <a class="back-link" href="{% url 'task_list' %}">
+                    ← Back to Tasks
+                </a>
+            
+            </div>
+
+        </main>
+        
+    </body>
+</html>
