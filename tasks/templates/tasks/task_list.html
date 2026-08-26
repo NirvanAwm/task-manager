@@ -14,6 +14,22 @@
         <main>
             <div class="task-header">
                 <h2>My Tasks</h2>
+
+                <form method="GET" class="task-filters">
+
+                    <label for="status">Filter by status:</label>
+
+                    <select name="status" id="status">
+                        <option value="">All</option>
+                        <option value="TODO" {% if status == 'TODO' %}selected{% endif %}>Todo</option>
+                        <option value="DOING" {% if status == 'DOING' %}selected{% endif %}>Doing</option>
+                        <option value="DONE" {% if status == 'DONE' %}selected{% endif %}>Done</option>
+                    </select>
+
+                    <button type="submit">Filter</button>
+
+                </form>
+
                 <a href="create/">+ New Task</a>
                 <a class="back-link" href="{% url 'logout' %}">
                     Logout

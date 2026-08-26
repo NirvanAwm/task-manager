@@ -74,6 +74,46 @@ main {
     background: #eee;
 }
 
+.task-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.task-filters label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.task-filters select {
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.task-filters button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.task-filters button:hover {
+    background: #444;
+}
+
+.task-filters select:focus {
+    outline: none;
+    border-color: #222;
+}
+
 .form-container {
     background: white;
     max-width: 800px;

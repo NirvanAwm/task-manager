@@ -8,8 +8,13 @@ from django.contrib.auth.decorators import login_required
 def task_list(request):
     tasks = Task.objects.filter(user=request.user)
 
+    status = request.GET.get('status')
+    if status:
+        tasks = tasks.filter(status=status)
+
     return render(request, 'tasks/task_list.html', {
-        'tasks':tasks
+        'tasks':tasks,
+        'status': status,
     })
 
 @login_required
