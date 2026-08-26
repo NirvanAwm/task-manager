@@ -34,7 +34,7 @@ def task_create(request):
 
 @login_required
 def task_edit(request, task_id):
-    task = get_object_or_404(Task, id=task_id)
+    task = get_object_or_404(Task, id=task_id, user = request.user)
 
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
@@ -54,7 +54,7 @@ def task_edit(request, task_id):
 
 @login_required
 def task_delete(request, task_id):
-    task = get_object_or_404(Task, id=task_id)
+    task = get_object_or_404(Task, id=task_id, user = request.user)
 
     if request.method == "POST":
         task.delete()
@@ -66,7 +66,7 @@ def task_delete(request, task_id):
 
 @login_required
 def task_detail(request, task_id):
-    task = get_object_or_404(Task, id=task_id)
+    task = get_object_or_404(Task, id=task_id, user = request.user)
 
     return render(request, 'tasks/task_detail.html', {
         'task': task

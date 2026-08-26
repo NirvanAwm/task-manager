@@ -15,6 +15,9 @@
             <div class="task-header">
                 <h2>My Tasks</h2>
                 <a href="create/">+ New Task</a>
+                <a class="back-link" href="{% url 'logout' %}">
+                    Logout
+                </a>
             </div>
 
             {% for task in tasks %}
@@ -48,16 +51,12 @@
                         
                     </div>
 
-                    <a class="back-link" href="{% url 'logout' %}">
-                        Logout
-                    </a>
+                    
                 </article>
 
             {% empty %}
                 <p>No tasks found. </p>
-                <a class="back-link" href="{% url 'logout' %}">
-                    Logout
-                </a>
+                
             {% endfor %}
         </main>
     </body>

@@ -37,6 +37,15 @@ main {
     border-radius: 6px;
 }
 
+.task-header .back-link {
+    background-color: #dc3545;
+    color: white;
+}
+
+.task-header .back-link:hover {
+    background-color: #b02a37;
+}
+
 .task {
     background: white;
     padding: 20px;
