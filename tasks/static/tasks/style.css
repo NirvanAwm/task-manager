@@ -24,11 +24,32 @@ main {
 
 .task-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
 }
 
+.task-header h2 {
+    margin: 0;
+}
+
+.new-task-btn {
+    padding: 9px 15px;
+
+    background: #222;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.new-task-btn:hover {
+    background: #444;
+}
 .task-header a {
     background: #222;
     color: white;
@@ -44,6 +65,78 @@ main {
 
 .task-header .back-link:hover {
     background-color: #b02a37;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content h1 {
+    margin: 0;
+}
+
+.header-content p {
+    margin: 5px 0 0;
+}
+
+.user-menu details {
+    position: relative;
+}
+
+.user-menu summary {
+    list-style: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.user-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.user-menu summary::after {
+    content: " ▼";
+    font-size: 11px;
+}
+
+.user-menu summary:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+
+    min-width: 120px;
+    padding: 8px;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 8px 10px;
+
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.user-dropdown a:hover {
+    background: #dc3545;
+    color: white;
 }
 
 .task {

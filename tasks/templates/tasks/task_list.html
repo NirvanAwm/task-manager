@@ -8,33 +8,47 @@
     </head>
     <body>
         <header>
-            <h1>Task Manager</h1>
-            <p>Manage your tasks easily</p>
+            <div class="header-content">    
+                
+                <div>
+                    <h1>Task Manager</h1>
+                    <p>Manage your tasks easily</p>
+                </div>
+                
+                <div class="user-menu">
+                    <details>
+                        <summary>{{ request.user.username }}</summary>
+                        <div class="user-dropdown">
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </details>
+                </div>
+            
+            </div>
         </header>
         <main>
             <div class="task-header">
                 <h2>My Tasks</h2>
-
-                <form method="GET" class="task-filters">
-
-                    <label for="status">Filter by status:</label>
-
-                    <select name="status" id="status">
-                        <option value="">All</option>
-                        <option value="TODO" {% if status == 'TODO' %}selected{% endif %}>Todo</option>
-                        <option value="DOING" {% if status == 'DOING' %}selected{% endif %}>Doing</option>
-                        <option value="DONE" {% if status == 'DONE' %}selected{% endif %}>Done</option>
-                    </select>
-
-                    <button type="submit">Filter</button>
-
-                </form>
-
-                <a href="create/">+ New Task</a>
-                <a class="back-link" href="{% url 'logout' %}">
-                    Logout
-                </a>
+                
+                <a class="new-task-btn" href="{% url 'task_create' %}">+ New Task</a>
+                
             </div>
+            <form method="GET" class="task-filters">
+
+                <label for="status">Filter by status:</label>
+
+                <select name="status" id="status">
+                    <option value="">All</option>
+                    <option value="TODO" {% if status == 'TODO' %}selected{% endif %}>Todo</option>
+                    <option value="DOING" {% if status == 'DOING' %}selected{% endif %}>Doing</option>
+                    <option value="DONE" {% if status == 'DONE' %}selected{% endif %}>Done</option>
+                </select>
+
+                <button type="submit">Filter</button>
+
+            </form>
+
+            
 
             {% for task in tasks %}
                 <article class="task">
