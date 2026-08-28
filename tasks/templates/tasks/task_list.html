@@ -58,8 +58,8 @@
                         <p>{{ task.description }}</p>
                         
                         <div class="task-meta">
-                            <span class="task-status status-{{ task.status|lower }}">{{ task.status }}</span>
-                            <span class="task-priority priority-{{ task.priority|lower }}">{{ task.priority }}</span>
+                            <span class="task-status status-{{ task.status|lower }}">{{ task.get_status_display }}</span>
+                            <span class="task-priority priority-{{ task.priority|lower }}">{{ task.get_priority_display }}</span>
                         </div>
 
                         {% if task.due_date %}
