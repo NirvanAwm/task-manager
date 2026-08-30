@@ -9,12 +9,25 @@ def task_list(request):
     tasks = Task.objects.filter(user=request.user)
 
     status = request.GET.get('status')
+
+    priority = request.GET.get('priority')
+
+    search = request.GET.get('search')
+
     if status:
         tasks = tasks.filter(status=status)
+
+    if priority :
+        tasks = tasks.filter(priority=priority)
+
+    if search:
+        tasks = tasks.filter(title__icontains=search)
 
     return render(request, 'tasks/task_list.html', {
         'tasks':tasks,
         'status': status,
+        'priority': priority,
+        'search': search
     })
 
 @login_required

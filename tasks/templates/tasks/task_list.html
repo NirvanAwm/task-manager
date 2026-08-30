@@ -33,6 +33,18 @@
                 <a class="new-task-btn" href="{% url 'task_create' %}">+ New Task</a>
                 
             </div>
+            
+            <form method="GET" class="task-search">
+                <input
+                type="text"
+                name="search"
+                placeholder="Search tasks ..."
+                value="{{ search|default:'' }}"
+                >
+
+                <button type="submit">Search</button>
+            </form>
+            
             <form method="GET" class="task-filters">
 
                 <label for="status">Filter by status:</label>
@@ -42,6 +54,28 @@
                     <option value="TODO" {% if status == 'TODO' %}selected{% endif %}>Todo</option>
                     <option value="DOING" {% if status == 'DOING' %}selected{% endif %}>Doing</option>
                     <option value="DONE" {% if status == 'DONE' %}selected{% endif %}>Done</option>
+                </select>
+
+                <label for="priority">Filter by priority:</label>
+
+                <select name="priority" id="priority">
+
+                    <option value="" {% if not priority %}selected{% endif %}>
+                        All
+                    </option>
+
+                    <option value="LOW" {% if priority == 'LOW' %}selected{% endif %}>
+                        Low
+                    </option>
+
+                    <option value="MEDIUM" {% if priority == 'MEDIUM' %}selected{% endif %}>
+                        Medium
+                    </option>
+
+                    <option value="HIGH" {% if priority == 'HIGH' %}selected{% endif %}>
+                        High
+                    </option>
+
                 </select>
 
                 <button type="submit">Filter</button>
