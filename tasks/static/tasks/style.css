@@ -393,14 +393,14 @@ main {
     background: #f8d7da;
 }
 
-.task-search {
+.task-controls {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
 }
 
-.task-search input {
-    width: 425px;
+.task-controls input {
+    width: 300px;
     padding: 9px 12px;
 
     border: 1px solid #ccc;
@@ -409,12 +409,12 @@ main {
     font-size: 14px;
 }
 
-.task-search input:focus {
+.task-controls input:focus {
     outline: none;
     border-color: #222;
 }
 
-.task-search button {
+.task-controls button {
     padding: 9px 15px;
 
     border: none;
@@ -427,6 +427,6 @@ main {
     cursor: pointer;
 }
 
-.task-search button:hover {
+.task-controls button:hover {
     background: #444;
 }

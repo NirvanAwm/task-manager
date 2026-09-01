@@ -34,18 +34,16 @@
                 
             </div>
             
-            <form method="GET" class="task-search">
+            
+            
+            <form method="GET" class="task-controls">
+
                 <input
                 type="text"
                 name="search"
                 placeholder="Search tasks ..."
                 value="{{ search|default:'' }}"
                 >
-
-                <button type="submit">Search</button>
-            </form>
-            
-            <form method="GET" class="task-filters">
 
                 <label for="status">Filter by status:</label>
 
@@ -78,7 +76,7 @@
 
                 </select>
 
-                <button type="submit">Filter</button>
+                <button type="submit">Apply</button>
 
             </form>
 
