@@ -75,6 +75,19 @@
                     </option>
 
                 </select>
+                <select name="sort" id="sort">
+                    <option value="" {% if not sort %}selected{% endif %}>
+                        Sort by
+                    </option>
+
+                    <option value="newest" {% if sort == 'newest' %}selected{% endif %}>
+                        Newest
+                    </option>
+
+                    <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>
+                        Oldest
+                    </option>
+                </select>
 
                 <button type="submit">Apply</button>
 

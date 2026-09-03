@@ -14,6 +14,8 @@ def task_list(request):
 
     search = request.GET.get('search')
 
+    sort = request.GET.get('sort')
+
     if status:
         tasks = tasks.filter(status=status)
 
@@ -23,11 +25,18 @@ def task_list(request):
     if search:
         tasks = tasks.filter(title__icontains=search)
 
+    if sort == 'newest':
+        tasks = tasks.order_by('-created_at')
+
+    elif sort == 'oldest':
+        tasks = tasks.order_by('created_at')
+
     return render(request, 'tasks/task_list.html', {
         'tasks':tasks,
         'status': status,
         'priority': priority,
-        'search': search
+        'search': search,
+        'sort': sort
     })
 
 @login_required
