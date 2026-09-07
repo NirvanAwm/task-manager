@@ -3,6 +3,7 @@ from .models import Task
 from .forms import TaskForm, RegisterForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 @login_required
 def task_list(request):
@@ -31,12 +32,22 @@ def task_list(request):
     elif sort == 'oldest':
         tasks = tasks.order_by('created_at')
 
+    paginator = Paginator(tasks, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    query_parms = request.GET.copy()
+    query_parms.pop('page', None)
+
     return render(request, 'tasks/task_list.html', {
-        'tasks':tasks,
+        'tasks':page_obj,
         'status': status,
         'priority': priority,
         'search': search,
-        'sort': sort
+        'sort': sort,
+        'page_obj': page_obj,
+        'query_parms': query_parms.urlencode(),
     })
 
 @login_required

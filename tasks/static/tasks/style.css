@@ -430,3 +430,43 @@ main {
 .task-controls button:hover {
     background: #444;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 30px;
+}
+
+.pagination a,
+.pagination .current-page {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #ddd;
+    border-radius: 7px;
+
+    background: white;
+    color: #222;
+
+    text-decoration: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.pagination a:hover {
+    background: #f2f2f2;
+}
+
+.pagination .current-page {
+    background: #222;
+    color: white;
+    border-color: #222;
+    font-weight: 600;
+}
