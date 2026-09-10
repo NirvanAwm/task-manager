@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Dashboard</title>
+
+        <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>Task manager</h1>
+                    <p>Dashboard</p>
+                </div>
+
+                <div class="user-menu">
+                    <details>
+                        <summary>{{ request.user.username }}</summary>
+                    
+                        <div class="user-dropdown">
+                            <a href="{% url 'logout' %}">
+                                Logout
+                            </a>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Overview of your tasks</p>
+                </div>
+
+                <a class="new-task-btn" href="{% url 'task_create' %}">
+                    + New Task 
+                </a>    
+            </div>
+
+            <div class="dashboard-cards">
+                <a class="dashboard-card" href="{% url 'task_list' %}">
+                    <h3>Total Tasks</h3>
+                    <span>{{ task_total }}</span>
+                </a>
+                <a class="dashboard-card" href="{% url 'task_list' %}?status=TODO">
+                    <h3>Todo</h3>
+                    <span>{{ task_todo }}</span>
+                </a>
+                <a class="dashboard-card" href="{% url 'task_list' %}?status=DOING">
+                    <h3>Doing</h3>
+                    <span>{{ task_doing }}</span>
+                </a>
+                <a class="dashboard-card" href="{% url 'task_list' %}?status=DONE">
+                    <h3>Done</h3>
+                    <span>{{ task_done }}</span>
+                </a>
+
+            </div>
+
+            <div class="dashboard-actions">
+                <a href="{% url 'task_list' %}">
+                    View My Tasks
+                </a>
+            </div>
+            
+
+        </main>
+    </body>
+</html>

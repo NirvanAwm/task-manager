@@ -116,7 +116,7 @@ def register(requset):
         if form.is_valid():
             user = form.save()
             login(requset, user)
-            return redirect('task_list')
+            return redirect('dashboard')
 
     else:
         form = RegisterForm()
@@ -132,7 +132,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('task_list')
+            return redirect('dashboard')
 
     else:
         form = AuthenticationForm()
@@ -146,5 +146,30 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+@login_required
+def dashboard(request):
 
+    task_total = Task.objects.filter(user=request.user).count()
+
+    task_todo = Task.objects.filter(
+        user=request.user,
+        status=Task.Status.TODO
+    ).count()
+
+    task_doing = Task.objects.filter(
+        user=request.user,
+        status=Task.Status.DOING
+    ).count()
+
+    task_done = Task.objects.filter(
+        user=request.user,
+        status=Task.Status.DONE
+    ).count()
+
+    return render(request, 'tasks/dashboard.html', {
+        'task_total': task_total,
+        'task_todo': task_todo,
+        'task_doing': task_doing,
+        'task_done': task_done
+    })
 # Create your views here.
