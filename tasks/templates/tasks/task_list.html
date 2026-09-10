@@ -87,6 +87,14 @@
                     <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>
                         Oldest
                     </option>
+
+                    <option value="due_soon" {% if sort == 'due_soon' %}selected{% endif %}>
+                        Due Soon
+                    </option>
+
+                    <option value="due_late" {% if sort == 'due_late' %}selected{% endif %}>
+                        Due Late
+                    </option>
                 </select>
 
                 <button type="submit">Apply</button>
@@ -110,6 +118,10 @@
                         {% if task.due_date %}
                             <p>
                                 Due : {{ task.due_date}}
+
+                                {% if task in overdue_tasks %}
+                                    <span class="overdue">Overdue</span>
+                                {% endif %}
                             </p>
                         {% endif %} 
                     </a>

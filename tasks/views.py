@@ -4,6 +4,8 @@ from .forms import TaskForm, RegisterForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.db.models import F
+from django.utils import timezone
 
 @login_required
 def task_list(request):
@@ -32,6 +34,24 @@ def task_list(request):
     elif sort == 'oldest':
         tasks = tasks.order_by('created_at')
 
+    elif sort == 'due_late':
+        tasks = tasks.order_by(
+            F('due_date').desc(nulls_last=True)
+        )
+
+    elif sort == 'due_soon':
+        tasks = tasks.order_by(
+            F('due_date').asc(nulls_last=True)
+        )
+
+    today = timezone.localdate()
+
+    overdue_tasks = Task.objects.filter(
+        user = request.user, 
+        due_date__lt=today, 
+        status__in=[Task.Status.TODO, Task.Status.DOING]
+    )
+
     paginator = Paginator(tasks, 5)
 
     page_number = request.GET.get('page')
@@ -48,6 +68,7 @@ def task_list(request):
         'sort': sort,
         'page_obj': page_obj,
         'query_parms': query_parms.urlencode(),
+        'overdue_tasks': overdue_tasks,
     })
 
 @login_required
@@ -166,10 +187,19 @@ def dashboard(request):
         status=Task.Status.DONE
     ).count()
 
+    today = timezone.localdate()
+
+    overdue_tasks = Task.objects.filter(
+        user = request.user, 
+        due_date__lt=today,
+        status__in=[Task.Status.TODO, Task.Status.DOING]
+    ).count()
+
     return render(request, 'tasks/dashboard.html', {
         'task_total': task_total,
         'task_todo': task_todo,
         'task_doing': task_doing,
-        'task_done': task_done
+        'task_done': task_done, 
+        'overdue_tasks':overdue_tasks,
     })
 # Create your views here.
