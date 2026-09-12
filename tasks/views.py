@@ -19,6 +19,8 @@ def task_list(request):
 
     sort = request.GET.get('sort')
 
+    overdue = request.GET.get('overdue')
+
     if status:
         tasks = tasks.filter(status=status)
 
@@ -46,7 +48,13 @@ def task_list(request):
 
     today = timezone.localdate()
 
-    overdue_tasks = Task.objects.filter(
+    if overdue:
+        tasks = tasks.filter(
+            due_date__lt=today,
+            status__in=[Task.Status.TODO, Task.Status.DOING],
+        )
+
+    overdue_count = Task.objects.filter(
         user = request.user, 
         due_date__lt=today, 
         status__in=[Task.Status.TODO, Task.Status.DOING]
@@ -68,7 +76,8 @@ def task_list(request):
         'sort': sort,
         'page_obj': page_obj,
         'query_parms': query_parms.urlencode(),
-        'overdue_tasks': overdue_tasks,
+        'overdue_count': overdue_count,
+        'overdue': overdue,
     })
 
 @login_required
@@ -189,7 +198,7 @@ def dashboard(request):
 
     today = timezone.localdate()
 
-    overdue_tasks = Task.objects.filter(
+    overdue_count = Task.objects.filter(
         user = request.user, 
         due_date__lt=today,
         status__in=[Task.Status.TODO, Task.Status.DOING]
@@ -200,6 +209,6 @@ def dashboard(request):
         'task_todo': task_todo,
         'task_doing': task_doing,
         'task_done': task_done, 
-        'overdue_tasks':overdue_tasks,
+        'overdue_count':overdue_count,
     })
 # Create your views here.
