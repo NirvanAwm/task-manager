@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import F
 from django.utils import timezone
+from django.contrib import messages
 
 @login_required
 def task_list(request):
@@ -91,6 +92,9 @@ def task_create(request):
             task.user = request.user
 
             task.save()
+
+            messages.success(request, 'Task created successfully.')
+
             return redirect('task_list') 
     
     else:
@@ -109,6 +113,9 @@ def task_edit(request, task_id):
 
         if form.is_valid():
             form.save()
+
+            messages.success(request, 'Task updated successfully.')
+
             return redirect('task_list')
 
     else:
@@ -126,6 +133,9 @@ def task_delete(request, task_id):
 
     if request.method == "POST":
         task.delete()
+
+        messages.success(request, 'Task deleted successfully.')
+
         return redirect('task_list')
 
     return render(request, 'tasks/task_delete.html', {

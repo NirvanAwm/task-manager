@@ -563,3 +563,21 @@ main {
     font-size: 12px;
     font-weight: 600;
 }
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 11px 14px;
+    border-radius: 7px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    background: #f8f8f8;
+}
+
+.message.success {
+    background: #f3f8f3;
+    border-color: #cfe3cf;
+    color: #315a31;
+}
